@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:insert name="header">
+      <ui:include src="header.xhtml"></ui:include>
+   	</ui:insert>
+   	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+   	<h:body styleClass="bg-dark">
+   		<div class="container">
+   		<ui:insert name="menu">
+   		<ui:include src="menu.xhtml" />
+   		</ui:insert>
+   			<div class="" style="height: 500px">
+   			<h:form>
+   			<div class="row">
+   				<div class="col-md-1"></div>
+   				<h1 class="text-white mt-5" style="font-size: 40px; font-weight: bold">presente</h1>
+   				</div>
+   				<div class="row">
+   				<div class="col-md-1"></div>
+   				</div>
+   				<div class="row">
+   				<div class="col-md-8"></div>
+   				<h:commandButton action="#{homeBean.direcionarCadastroCrianca()}" styleClass="btn btn-danger" value="Nova Criança"/>
+   				</div>
+   				<table class=" table text-white mt-3 col-md-9">
+   				<thead>
+   				<td>Nome</td><td>Valor</td><td></td>
+   				</thead>
+   				<ui:repeat var="crianca" value="#{criancaBean.criancas}">
+   					<tr>
+   						<td>#{crianca.nome}</td><td>#{crianca.idade}</td>
+   						<td>
+   						<div class="row">
+   						<a class="text-white" href="#" style="font-size: 20px"><i class="fas fa-trash-alt"></i></a>
+   						<div class="col-md-2"></div>
+   						<a class="text-white" href="#" style="font-size: 20px"><i class="fas fa-edit"></i></a>
+   						</div>   						
+   						</td>
+   					</tr>
+   				</ui:repeat>
+   				</table>
+   			</h:form>
+   		</div>
+   		</div>
+   	</h:body>
+</html>

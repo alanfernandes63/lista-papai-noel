@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      
+      <ui:insert>
+      	<ui:include src="header.xhtml" />
+      </ui:insert>
+
+	<h:body styleClass="bg-dark">
+		<div class="container">
+		<ui:insert>
+		<ui:include src="menu.xhtml" />
+		</ui:insert>
+			<div class="row mt-5">
+				<div class="col col-md-12" style="height: 400px">
+				<div class="row">
+					<h1 class="text-white">Cadastro de criança</h1>
+				</div>
+				<h:form>
+				<div class="row">
+					<div class="col-md-4">
+					<div class="row text-white">
+					<h:outputText value="Nome:"/>
+					<h:inputText value="#{criancaBean.nome}" styleClass="form-control col-md-12"/>
+					<h:outputText value="Idade:"/>
+					<h:inputText value="#{criancaBean.idade}" styleClass="form-control col-md-12"/>
+					<h:commandButton action="#{criancaBean.save()}" value="Salvar" styleClass="mt-2 col-md-12 btn btn-danger"/>
+					</div>
+					</div>
+				</div>
+				</h:form>
+				</div>
+			</div>
+		</div>
+	</h:body>
+</html>
