@@ -23,7 +23,7 @@ public class GenericDaoHibernate <T, ID extends Serializable> implements Generic
 		Transaction transaction = session.getTransaction();
 		
 		transaction.begin();
-		session.save(t);
+		session.saveOrUpdate(t);
 		transaction.commit();
 		session.close();
 		
@@ -46,6 +46,11 @@ public class GenericDaoHibernate <T, ID extends Serializable> implements Generic
 
 	public T delete(T t) {
 		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction transaction = session.beginTransaction();
+		session.delete(t);
+		transaction.commit();
+		session.close();
 		return null;
 	}
 

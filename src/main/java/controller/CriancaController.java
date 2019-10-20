@@ -1,11 +1,12 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import dao.CriancaDao;
 import model.Crianca;
 
-public class CriancaController {
+public class CriancaController implements Serializable{
 	
 	private CriancaDao criancaDao;
 
@@ -23,6 +24,10 @@ public class CriancaController {
 	
 	public List<Crianca> findAll(){
 		return criancaDao.findAll();
+	}
+	
+	public Crianca delete(Crianca crianca) {
+		return criancaDao.delete(crianca);
 	}
 
 }
