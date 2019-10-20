@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 import controller.CriancaController;
 import model.Crianca;
@@ -38,19 +36,21 @@ public class CriancaBean implements Serializable{
 	
 	public String save() {
 		
-		if(criancaUpdate == null) {
-			Crianca cri = new Crianca(nome,Integer.parseInt(idade));
-				cri.setId(id);
-			criancaController.save(cri);
-			criancas = criancaController.findAll();
+		if (nome.trim() != "" && idade.trim() != "") {
+			if(criancaUpdate == null) {
+				Crianca cri = new Crianca(nome,Integer.parseInt(idade));
+					cri.setId(id);
+				criancaController.save(cri);
+				criancas = criancaController.findAll();
+				return "listarCrianca.xhtml";
+			}
+			criancaUpdate.setId(id);
+			criancaUpdate.setNome(nome);
+			criancaUpdate.setIdade(Integer.parseInt(idade));
+			criancaController.save(criancaUpdate);
 			return "listarCrianca.xhtml";
 		}
-		criancaUpdate.setId(id);
-		criancaUpdate.setNome(nome);
-		criancaUpdate.setIdade(Integer.parseInt(idade));
-		criancaController.save(criancaUpdate);
-		
-		return "listarCrianca.xhtml";
+		return null;
 	}
 	
 	public void delete(Crianca crianca) {
